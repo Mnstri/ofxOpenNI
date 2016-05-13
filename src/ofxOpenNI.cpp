@@ -80,7 +80,7 @@ ofxOpenNI::ofxOpenNI(){
     
     width = XN_VGA_X_RES;
     height = XN_VGA_Y_RES;
-    fps = 30;
+    fps = 60;
 
     g_ONITask = ONI_NONE;
 
@@ -106,7 +106,7 @@ ofxOpenNI::ofxOpenNI(){
 
 //--------------------------------------------------------------
 bool ofxOpenNI::setup(bool threaded){
-    return init("", "", threaded);
+    return init("", "", threaded = false);
 }
 
 //--------------------------------------------------------------
@@ -157,7 +157,7 @@ bool ofxOpenNI::init(string oniFilePath, string xmlFilePath, bool threaded){
 void ofxOpenNI::start(){
     if(bIsThreaded && !isThreadRunning()) {
         ofLogNotice(LOG_NAME) << "Starting ofxOpenNI with threading";
-        startThread(true, false);
+        startThread();
     } else if(!bIsThreaded) {
         ofLogNotice(LOG_NAME) << "Starting ofxOpenNI without threading";
     }
@@ -599,7 +599,7 @@ void ofxOpenNI::setFrame(int frame){
             bPaused = false;
             updateGenerators();
             bPaused = true;
-            startThread(true, false);
+            startThread();
         }
     }
 }
@@ -672,7 +672,7 @@ void ofxOpenNI::nextFrame(){
             bPaused = false;
             updateGenerators();
             bPaused = true;
-            startThread(true, false);
+            startThread();
         }
     }
 }
@@ -688,7 +688,7 @@ void ofxOpenNI::previousFrame(){
             bPaused = false;
             updateGenerators();
             bPaused = true;
-            startThread(true, false);
+            startThread();
         }
     }
 }
