@@ -1,3 +1,11 @@
+=======================
+**2016-05-14 15:09**
+Tested : openFrameworks 0.9.3, Xcode 7.3, Elcapitan.
+TODO : Low Framerate.
+
+=======================
+
+
 Version 1.0 of ofxOpenNI has been deprecated (originally the master and develop branches)
 
 You can get a copy by downloading a zip from here: https://github.com/gameoverhack/ofxOpenNI/tree/v1.0
