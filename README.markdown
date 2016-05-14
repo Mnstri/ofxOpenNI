@@ -1,7 +1,7 @@
 =======================
-**2016-05-14 15:09**
-Tested : openFrameworks 0.9.3, Xcode 7.3, Elcapitan.
-TODO : Low Framerate.
+**2016-05-14 15:09**    
+Tested : openFrameworks 0.9.3, Xcode 7.3, Elcapitan.   
+TODO : Low Framerate. fps 30 or 60 ???   
 
 =======================
 

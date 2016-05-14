@@ -14,3 +14,9 @@ build/
 /example/obj/
 /example/build/
 example/*.layout
+
+
+*.app
+xcuserdata/
+DerivedData/
+project.xcworkspace
