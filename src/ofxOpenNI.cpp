@@ -80,7 +80,7 @@ ofxOpenNI::ofxOpenNI(){
     
     width = XN_VGA_X_RES;
     height = XN_VGA_Y_RES;
-    fps = 60;
+    fps = 30;
 
     g_ONITask = ONI_NONE;
 
@@ -1188,7 +1188,7 @@ void ofxOpenNI::update(){
                             ofLogVerbose(LOG_NAME) << "Allocating mask texture " << user.getXnID();
                             user.maskTexture.allocate(getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(user.getMaskPixelFormat()));
                         }
-                        if(user.maskPixels.getPixels() != NULL) user.maskTexture.loadData(user.maskPixels.getPixels(), getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(user.getMaskPixelFormat()));
+                        if(user.maskPixels.getData() != NULL) user.maskTexture.loadData(user.maskPixels.getData(), getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(user.getMaskPixelFormat()));
                     }
                     user.bNewPixels = false;
                     user.bNewPointCloud = false;
@@ -1218,14 +1218,14 @@ void ofxOpenNI::update(){
                         ofLogVerbose(LOG_NAME) << "Allocating mask texture for depthThreshold";
                         depthThreshold.maskTexture.allocate(getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(depthThreshold.getMaskPixelFormat()));
                     }
-                    depthThreshold.maskTexture.loadData(depthThreshold.maskPixels.getPixels(), getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(depthThreshold.getMaskPixelFormat()));
+                    depthThreshold.maskTexture.loadData(depthThreshold.maskPixels.getData(), getWidth(), getHeight(), ofGetGLFormatFromPixelFormat(depthThreshold.getMaskPixelFormat()));
                 }
                 if(depthThreshold.getUseDepthPixels()){
                     if(depthThreshold.depthTexture.getWidth() != getWidth() || depthThreshold.depthTexture.getHeight() != getHeight()){
                         ofLogVerbose(LOG_NAME) << "Allocating depth texture for depthThreshold";
                         depthThreshold.depthTexture.allocate(getWidth(), getHeight(), GL_RGBA);
                     }
-                    depthThreshold.depthTexture.loadData(depthThreshold.depthPixels.getPixels(), getWidth(), getHeight(), GL_RGBA);
+                    depthThreshold.depthTexture.loadData(depthThreshold.depthPixels.getData(), getWidth(), getHeight(), GL_RGBA);
                 }
 
                 depthThreshold.bNewPixels = false;
@@ -1369,16 +1369,16 @@ void ofxOpenNI::updateDepthPixels(){
 
 	// copy depth into texture-map
 	for (XnUInt16 y = g_DepthMD.YOffset(); y < g_DepthMD.YRes() + g_DepthMD.YOffset(); y++){
-		unsigned char * texture = backDepthPixels->getPixels() + y * g_DepthMD.XRes() * 4 + g_DepthMD.XOffset() * 4;
+		unsigned char * texture = backDepthPixels->getData() + y * g_DepthMD.XRes() * 4 + g_DepthMD.XOffset() * 4;
 		for (XnUInt16 x = 0; x < g_DepthMD.XRes(); x++, depth++, texture += 4){
 
             ofColor depthColor;
 
-            bool bUseSubtraction = false;
-            if(bUseBackgroundSubtraction && !bGrabBackgroundPixels &&
-               *depth - backgroundPixels[y*getWidth()+x] <= 500){
-                bUseSubtraction = true;
-            }
+//            bool bUseSubtraction = false;
+//            if(bUseBackgroundSubtraction && !bGrabBackgroundPixels &&
+//               *depth - backgroundPixels[y*getWidth()+x] <= 500){
+//                bUseSubtraction = true;
+//            }
 
             getDepthColor(depthColoring, *depth, depthColor, maxDepth);
 
@@ -1392,7 +1392,7 @@ void ofxOpenNI::updateDepthPixels(){
 				texture[3] = depthColor.a;
             }
 
-            if(getNumDepthThresholds() > 0) updateDepthThresholds((bUseSubtraction ? 11000 : *depth), depthColor, x, y);
+//            if(getNumDepthThresholds() > 0) updateDepthThresholds((bUseSubtraction ? 11000 : *depth), depthColor, x, y);
 
 		}
 	}
