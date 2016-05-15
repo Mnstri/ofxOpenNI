@@ -1414,7 +1414,7 @@ void ofxOpenNI::updateIRPixels(){
 		ir_pixels[i] = pImage[i]/4;
 	}
 	backImagePixels->setFromPixels(ir_pixels, g_InfraMD.XRes(), g_InfraMD.YRes(), OF_IMAGE_GRAYSCALE);
-    delete ir_pixels;
+    delete[] ir_pixels;
 }
 
 /**************************************************************
