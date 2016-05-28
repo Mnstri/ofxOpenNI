@@ -115,7 +115,7 @@ bool ofxOpenNI::setupFromXML(string xmlFilePath, bool threaded){
 }
 
 bool ofxOpenNI::setupFromONI(string oniFilePath, bool threaded){
-    return init(oniFilePath, "", threaded);
+    return init(oniFilePath, "", threaded = false);
 }
 
 //--------------------------------------------------------------
@@ -1374,6 +1374,7 @@ void ofxOpenNI::updateDepthPixels(){
 
             ofColor depthColor;
 
+            // ?
 //            bool bUseSubtraction = false;
 //            if(bUseBackgroundSubtraction && !bGrabBackgroundPixels &&
 //               *depth - backgroundPixels[y*getWidth()+x] <= 500){
