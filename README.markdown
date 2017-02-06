@@ -5,6 +5,7 @@ Tested : openFrameworks 0.9.8, Xcode 8.0, OS X El Capitan (10.11.6).
 - Some of the examples don't work 
 - Added support for center of mass tracking without skeleton tracking
 - Working on a general tracking software that would send OSC
+
 =======================
 
 =======================
