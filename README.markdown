@@ -1,4 +1,13 @@
 =======================
+**2017-02-06**    
+Tested : openFrameworks 0.9.8, Xcode 8.0, OS X El Capitan (10.11.6).   
+- Seems to run fine without any framerate issues.
+- Some of the examples don't work 
+- Added support for center of mass tracking without skeleton tracking
+- Working on a general tracking software that would send OSC
+=======================
+
+=======================
 **2016-05-14 15:09**    
 Tested : openFrameworks 0.9.3, Xcode 7.3, Elcapitan.   
 TODO : Low Framerate. fps 30 or 60 ???   
