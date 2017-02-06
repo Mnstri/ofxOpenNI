@@ -1812,6 +1812,15 @@ XnSkeletonProfile ofxOpenNI::getSkeletonProfile(){
 }
 
 //--------------------------------------------------------------
+
+ofPoint ofxOpenNI::getCenterOfMass(XnUserID nID){
+    XnPoint3D center;
+    g_User.GetCoM(nID, center);
+    return toOf(center);
+}
+
+
+//--------------------------------------------------------------
 void ofxOpenNI::resetUserTracking(XnUserID nID, bool forceImmediateRestart){
     ofxOpenNIScopedLock scopedLock(bIsThreaded, mutex);
     if(currentTrackedUsers.find(nID) == currentTrackedUsers.end()) return;

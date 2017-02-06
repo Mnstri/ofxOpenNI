@@ -209,6 +209,9 @@ public:
 
     bool setSkeletonProfile(XnSkeletonProfile profile);
     XnSkeletonProfile getSkeletonProfile();
+    
+    // added center of mass tracking without skeleton tracking
+    ofPoint getCenterOfMass(XnUserID nID);
 
     // gesture methods
     bool addAllGestures();
